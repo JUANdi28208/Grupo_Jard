@@ -2,18 +2,16 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portafolio - Grupo Jard</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <!-- Estilos personalizados -->
     <style>
         :root {
@@ -76,9 +74,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0rem);
             }
+
             50% {
                 transform: translateY(-1.5rem);
             }
@@ -208,18 +209,78 @@
             color: white;
         }
 
-        .stats-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: var(--degradado);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        /* Estilos para el carrusel */
+        .carousel-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
         }
 
-        .stats-text {
-            font-size: 1rem;
-            color: #6c757d;
+        /* CORRECCIÓN: ocultar los items no activos para que el carrusel funcione */
+        .carousel-item {
+            display: none;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .carousel-item.active {
+            display: block;
+        }
+
+        .carousel-item img {
+            max-height: 100%;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .carousel-caption {
+            background: rgba(12, 68, 58, 0.85);
+            border-radius: 8px;
+            padding: 10px 15px;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            max-width: 80%;
+        }
+
+        .indicators-custom .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 5px;
+            background-color: var(--limon);
+        }
+
+        .controls-custom .carousel-control-prev,
+        .controls-custom .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(12, 68, 58, 0.8);
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+        }
+
+        .controls-custom .carousel-control-prev {
+            left: 15px;
+        }
+
+        .controls-custom .carousel-control-next {
+            right: 15px;
+        }
+
+        .controls-custom .carousel-control-prev:hover,
+        .controls-custom .carousel-control-next:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item {
+                height: 300px;
+            }
         }
     </style>
 </head>
@@ -267,17 +328,16 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">
+                    <h1 class="display-4 fw-bold mb-4">
                         Hola, nosotros somos <span class="text-custom-limon">Grupo Jard</span>
                     </h1>
-                    <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">
+                    <p class="lead mb-4">
                         Creamos soluciones digitales innovadoras que impulsan negocios y mejoran experiencias.
                     </p>
-                    <a href="#proyectos" class="btn btn-custom btn-lg px-4 animate__animated animate__fadeInUp animate__delay-1s">Ver nuestros proyectos</a>
+                    <a href="#proyectos" class="btn btn-custom btn-lg px-4">Ver nuestros proyectos</a>
                 </div>
                 <div class="col-lg-6">
-                    <img src="{{ asset('assets/imginicio/copa-ganadora-concepto-medalla-oro.png') }}" 
-                         alt="Foto de perfil" class="img-fluid rounded-circle float-animation">
+                    <img src="assets/imginicio/copa-ganadora-concepto-medalla-oro.png" alt="Grupo Jard" class="img-fluid rounded-circle float-animation" />
                 </div>
             </div>
         </div>
@@ -290,19 +350,16 @@
 
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <img src="{{ asset('assets/imginicio/grupo_jard.png') }}" 
-                         alt="Sobre nosotros" class="img-fluid rounded animate__animated animate__fadeInLeft">
+                    <img src="assets/imginicio/grupo_jard.png" alt="Sobre nosotros" class="img-fluid rounded" />
                 </div>
-                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                <div class="col-lg-6">
                     <h3 class="mb-4">Nuestra trayectoria</h3>
                     <p class="mb-4">
-                        Somos un equipo apasionado por el desarrollo de software con amplia experiencia en la creación de 
-                        soluciones web y móviles. Nuestro enfoque combina creatividad y funcionalidad para 
-                        entregar productos que superan las expectativas.
+                        Somos un equipo apasionado por el desarrollo de software con amplia experiencia en la creación de
+                        soluciones web y móviles. Nuestro enfoque combina creatividad y funcionalidad para entregar productos que superan las expectativas.
                     </p>
                     <p class="mb-4">
-                        Nos especializamos en tecnologías modernas y disfrutamos enfrentando nuevos 
-                        desafíos que nos permitan crecer profesionalmente.
+                        Nos especializamos en tecnologías modernas y disfrutamos enfrentando nuevos desafíos que nos permitan crecer profesionalmente.
                     </p>
                     <div class="d-flex">
                         <a href="#contacto" class="btn btn-custom me-3">Contáctanos</a>
@@ -316,7 +373,7 @@
     <section id="mision-vision" class="py-5">
         <div class="container">
             <h2 class="heading text-center display-4 fw-bold mb-5">Nuestra Identidad</h2>
-            
+
             <div class="row mb-5">
                 <div class="col-md-6 mb-4 fade-in">
                     <div class="mission-vision-card card h-100 shadow-sm">
@@ -325,9 +382,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text fs-5">
-                                Desarrollar soluciones tecnológicas innovadoras que impulsen la transformación digital
-                                de empresas y emprendedores, ofreciendo productos de alta calidad, escalables y adaptados a las
-                                necesidades del cliente.
+                                Desarrollar soluciones tecnológicas innovadoras que impulsen la transformación digital de empresas y emprendedores, ofreciendo productos de alta calidad, escalables y adaptados a las necesidades del cliente.
                             </p>
                         </div>
                     </div>
@@ -339,16 +394,15 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text fs-5">
-                                Ser reconocidos como líderes en desarrollo de software en Latinoamérica, destacándonos
-                                por nuestra creatividad, compromiso y excelencia técnica.
+                                Ser reconocidos como líderes en desarrollo de software en Latinoamérica, destacándonos por nuestra creatividad, compromiso y excelencia técnica.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <h3 class="text-center mb-4 fw-bold">Valores Corporativos</h3>
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card border-0 shadow-sm">
@@ -415,7 +469,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4 class="mb-4">Tecnologías</h4>
-                    
+
                     <div class="skill-item mb-4">
                         <div class="d-flex justify-content-between">
                             <span>HTML/CSS</span>
@@ -425,7 +479,7 @@
                             <div class="skill-progress" style="width: 90%"></div>
                         </div>
                     </div>
-                    
+
                     <div class="skill-item mb-4">
                         <div class="d-flex justify-content-between">
                             <span>JavaScript</span>
@@ -435,7 +489,7 @@
                             <div class="skill-progress" style="width: 85%"></div>
                         </div>
                     </div>
-                    
+
                     <div class="skill-item mb-4">
                         <div class="d-flex justify-content-between">
                             <span>PHP/Laravel</span>
@@ -446,10 +500,10 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6">
                     <h4 class="mb-4">Otras habilidades</h4>
-                    
+
                     <div class="skill-item mb-4">
                         <div class="d-flex justify-content-between">
                             <span>Diseño UI/UX</span>
@@ -459,7 +513,7 @@
                             <div class="skill-progress" style="width: 75%"></div>
                         </div>
                     </div>
-                    
+
                     <div class="skill-item mb-4">
                         <div class="d-flex justify-content-between">
                             <span>Base de datos</span>
@@ -469,10 +523,10 @@
                             <div class="skill-progress" style="width: 70%"></div>
                         </div>
                     </div>
-                    
+
                     <div class="skill-item mb-4">
                         <div class="d-flex justify-content-between">
-                            <span>DevOps</span>
+                            <span>DevSecOps</span>
                             <span>60%</span>
                         </div>
                         <div class="skill-bar">
@@ -489,27 +543,97 @@
         <div class="container">
             <h2 class="heading text-center display-4 fw-bold mb-5">Nuestros Proyectos</h2>
 
-            <div class="row g-4">
-                <!-- Proyecto 1 -->
-                <div class="col-md-4">
-                    <div class="card project-card h-100 border-0 shadow-sm">
-                        <img src="{{ asset('assets/imginicio/logo_software.png') }}" class="card-img-top" alt="Proyecto 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Administración de escuelas deportivas</h5>
-                            <p class="card-text">Plataforma de administración de escuelas deportivas desarrollada con Laravel y JavaScript.</p>
-                            <div class="mb-3">
-                                <span class="badge bg-custom-gradient me-1">Laravel</span>
-                                <span class="badge bg-custom-gradient me-1">JavaScript</span>
-                                <span class="badge bg-custom-gradient">MySQL</span>
+            <!-- Carrusel de SportZone -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h3 class="text-center mb-4">SportZone - Sistema de Gestión Deportiva</h3>
+                    <div class="carousel-container">
+                        <div id="projectCarousel" class="carousel slide indicators-custom controls-custom" data-bs-ride="carousel" data-bs-interval="3000">
+                            <!-- Indicadores -->
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                                <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="1"></button>
+                                <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="2"></button>
+                                <button type="button" data-bs-target="#projectCarousel" data-bs-slide-to="3"></button>
                             </div>
-                            <a href="https://www.sportzone.click" class="btn btn-sm btn-custom">Ver detalles</a>
+
+                            <!-- Contenido del carrusel -->
+                            <div class="carousel-inner">
+                                <!-- Logo Principal - ESTA DEBE SER LA PRIMERA Y ACTIVA -->
+                                <div class="carousel-item active">
+                                    <img src="assets/imginicio/logo_software.png" style="height:610px; width:1000px;"class="d-block w-100" alt="Logo Principal" />
+                                    <div class="carousel-caption">
+                                        <h5>Logo SportZone</h5>
+                                    </div>
+                                </div>
+
+                                <!-- Dashboard -->
+                                <div class="carousel-item">
+                                    <img src="assets/imginicio/Panel_principal_Administrador.png" class="d-block w-100" alt="Dashboard" />
+                                    <div class="carousel-caption">
+                                        <h5>Panel de Administración</h5>
+                                    </div>
+                                </div>
+
+                                <!-- Gestión de usuarios -->
+                                <div class="carousel-item">
+                                    <img src="assets/imginicio/Lista de usuarios de administrador.png" class="d-block w-100" alt="Gestión de usuarios" />
+                                    <div class="carousel-caption">
+                                        <h5>Gestión de Usuarios</h5>
+                                    </div>
+                                </div>
+
+                                <!-- Reportes -->
+                                <div class="carousel-item">
+                                    <img src="assets/imginicio/Vista de reportes de colaborador.png" class="d-block w-100" alt="Reportes" />
+                                    <div class="carousel-caption">
+                                        <h5>Reportes y Estadísticas</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Controles -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Descripción del proyecto -->
+                    <div class="row mt-4">
+                        <div class="col-md-8 mx-auto">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">SportZone - Sistema de Gestión Deportiva</h4>
+                                    <p class="card-text">
+                                        Sistema completo de administración para escuelas deportivas desarrollado con Laravel y JavaScript.
+                                        Incluye gestión de alumnos, profesores, pagos, calendarización de actividades y reportes estadísticos.
+                                    </p>
+                                    <div class="tech-stack mt-3">
+                                        <span class="badge bg-custom-gradient me-1">Laravel</span>
+                                        <span class="badge bg-custom-gradient me-1">PHP</span>
+                                        <span class="badge bg-custom-gradient me-1">MySQL</span>
+                                        <span class="badge bg-custom-gradient me-1">Bootstrap</span>
+                                        <span class="badge bg-custom-gradient">JavaScript</span>
+                                    </div>
+                                    <div class="project-links mt-4">
+                                        <a href="https://sportzone.click" class="btn btn-custom me-2" target="_blank" rel="noopener noreferrer">
+                                            <i class="fas fa-external-link-alt me-1"></i>Ver sitio web
+                                        </a>
+                                        <a href="https://github.com/413xsalis/SportZoneFinal.git" class="btn btn-outline-custom" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-github me-1"></i>Código fuente
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                
-                
-               
             </div>
         </div>
     </section>
@@ -525,7 +649,7 @@
                         <h3 class="mb-4">Información de contacto</h3>
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-envelope text-custom-limon me-3 fa-lg"></i>
-                            <span>grupojard@sportzone.click</span>
+                            <span>contacto@grupojard.com</span>
                         </div>
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-phone text-custom-limon me-3 fa-lg"></i>
@@ -537,15 +661,15 @@
                         </div>
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-phone text-custom-limon me-3 fa-lg"></i>
-                            <span>+57 324 774 9658</span>
+                            <span>+57 324 623 8862</span>
                         </div>
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-phone text-custom-limon me-3 fa-lg"></i>
-                            <span>+57 324 6238862</span>
+                            <span>+57 324 774 9658</span>
                         </div>
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-map-marker-alt text-custom-limon me-3 fa-lg"></i>
-                            <span>Bogotá, Colombia</span>
+                            <span>Ciudad, País</span>
                         </div>
                         <div class="mt-4">
                             <h4 class="mb-3">Síguenos</h4>
@@ -558,49 +682,37 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-6">
-                    @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert"
-                            id="success-alert">
-                            {{ session('success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                aria-label="Cerrar"></button>
-                        </div>
-                    @endif
+                    <div id="form-message" class="alert alert-success alert-dismissible fade show mb-3 d-none" role="alert">
+                        <span id="form-message-text"></span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                    </div>
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    <form action="{{ route('contacto.store') }}" method="POST" class="bg-white p-4 rounded shadow-sm contact-form">
-                        @csrf
+                    <form id="contact-form" class="bg-white p-4 rounded shadow-sm contact-form" novalidate>
                         <h3 class="heading mb-4">Envíanos un mensaje</h3>
 
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required />
                             <label for="nombre">Nombre</label>
+                            <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required />
                             <label for="email">Email</label>
+                            <div class="invalid-feedback">Por favor ingresa un email válido.</div>
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Teléfono">
+                            <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" />
                             <label for="telefono">Teléfono</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <textarea class="form-control" id="mensaje" name="mensaje" placeholder="Mensaje" style="height: 150px" required></textarea>
                             <label for="mensaje">Mensaje</label>
+                            <div class="invalid-feedback">Por favor ingresa un mensaje.</div>
                         </div>
 
                         <button type="submit" class="btn btn-custom w-100 py-3">ENVIAR MENSAJE</button>
@@ -613,7 +725,7 @@
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4">
         <div class="container">
-            <p class="mb-2">&copy; {{ date('Y') }} Grupo Jard. Todos los derechos reservados.</p>
+            <p class="mb-2">&copy; 2023 Grupo Jard. Todos los derechos reservados.</p>
             <div class="d-flex justify-content-center gap-3 mb-2">
                 <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
                 <a href="#" class="text-white"><i class="fab fa-github fa-lg"></i></a>
@@ -627,15 +739,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let alert = document.getElementById('success-alert');
-            if (alert) {
-                setTimeout(() => {
-                    let bsAlert = new bootstrap.Alert(alert);
-                    bsAlert.close();
-                }, 4000);
-            }
-            
+        document.addEventListener("DOMContentLoaded", function() {
+            // Inicializar el carrusel manualmente
+            const myCarousel = document.getElementById('projectCarousel');
+            const carousel = new bootstrap.Carousel(myCarousel, {
+                interval: 3000,
+                wrap: true
+            });
+
             // Animación para las barras de habilidades
             const skillBars = document.querySelectorAll('.skill-progress');
             skillBars.forEach(bar => {
@@ -645,26 +756,57 @@
                     bar.style.width = width;
                 }, 500);
             });
-            
+
             // Animación de aparición al hacer scroll
             const fadeElements = document.querySelectorAll('.fade-in');
-            
+
             function checkFade() {
                 fadeElements.forEach(element => {
                     const elementTop = element.getBoundingClientRect().top;
                     const elementBottom = element.getBoundingClientRect().bottom;
                     const isVisible = (elementTop < window.innerHeight - 100) && (elementBottom > 0);
-                    
+
                     if (isVisible) {
                         element.classList.add('visible');
                     }
                 });
             }
-            
+
             // Verificar al cargar y al hacer scroll
             checkFade();
             window.addEventListener('scroll', checkFade);
+
+            // Manejo del formulario de contacto con validación básica
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+            const formMessageText = document.getElementById('form-message-text');
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Validación simple
+                if (!contactForm.checkValidity()) {
+                    contactForm.classList.add('was-validated');
+                    return;
+                }
+
+                // Simular envío del formulario
+                formMessageText.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.';
+                formMessage.classList.remove('d-none');
+                formMessage.classList.remove('alert-danger');
+                formMessage.classList.add('alert-success');
+
+                // Limpiar formulario
+                contactForm.reset();
+                contactForm.classList.remove('was-validated');
+
+                // Ocultar mensaje después de 5 segundos
+                setTimeout(() => {
+                    formMessage.classList.add('d-none');
+                }, 5000);
+            });
         });
     </script>
 </body>
+
 </html>
